@@ -144,7 +144,7 @@ export const teamHierarchy: TeamHierarchy = {
         "Core website, API backend, and database architecture",
         "Hands-on AWS workshop code repository curation",
         "Cloud sandbox management and security boundaries",
-        "Student open-source project review and DevOps pipelines",
+        "Student Projects Review",
       ],
       currentInitiatives: [
         "SXC Cloud Sandbox multi-tenant portal development",
