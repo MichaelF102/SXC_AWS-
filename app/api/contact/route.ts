@@ -13,7 +13,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const saved = db.addMessage({
+    const saved = await db.addMessage({
       name,
       email,
       subject: subject || "General Inquiry",

@@ -71,7 +71,7 @@ The **SXC AWS Club Platform** is a modern, high-performance web application engi
 | **Styling** | [Tailwind CSS 3.4](https://tailwindcss.com/) + Custom Glassmorphism & Cyber Gradients |
 | **3D & Animation** | [Three.js](https://threejs.org/) + [Framer Motion](https://www.framer.com/motion/) |
 | **Icons** | [Lucide React](https://lucide.dev/) |
-| **Database & ORM** | [Prisma ORM](https://www.prisma.io/) + In-Memory Fallback Store |
+| **Database & Auth** | [Supabase (PostgreSQL)](https://supabase.com/) + In-Memory Fallback Store |
 | **Effects** | `canvas-confetti` |
 | **Deployment Target** | [Cloudflare Pages](https://pages.cloudflare.com/) / [Vercel](https://vercel.com/) |
 

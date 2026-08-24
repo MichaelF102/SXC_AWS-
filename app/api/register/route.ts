@@ -15,9 +15,13 @@ export async function POST(req: Request) {
       );
     }
 
-    const reg = db.registerForEvent(eventId, {
+    const reg = await db.registerForEvent(eventId, {
       name: registrantName,
+      surname,
+      uid,
       email,
+      academicYear,
+      stream,
       college: "St. Xavier's College",
     });
 

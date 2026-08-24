@@ -92,6 +92,7 @@ export interface ContactMessageData {
   name: string;
   email: string;
   subject: string;
+  category?: string;
   message: string;
   isRead: boolean;
   createdAt: string;

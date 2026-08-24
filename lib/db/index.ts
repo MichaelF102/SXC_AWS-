@@ -14,8 +14,9 @@ import {
   AWSModuleData,
   ContactMessageData,
 } from "@/lib/data/initialData";
+import { supabase, getServiceSupabase, isSupabaseConfigured } from "@/lib/supabase";
 
-// In-Memory Store for instant zero-config rendering & mutations
+// Local Store for instant SSG / Static Generation and offline fallback
 class LocalDataStore {
   departments: DepartmentData[] = [...INITIAL_DEPARTMENTS];
   teamMembers: TeamMemberData[] = [...INITIAL_TEAM_MEMBERS];
@@ -24,9 +25,20 @@ class LocalDataStore {
   gallery: GalleryImageData[] = [...INITIAL_GALLERY];
   modules: AWSModuleData[] = [...INITIAL_AWS_MODULES];
   messages: ContactMessageData[] = [...INITIAL_CONTACT_MESSAGES];
-  registrations: { id: string; eventId: string; name: string; email: string; college: string; registeredAt: string }[] = [];
+  registrations: {
+    id: string;
+    eventId: string;
+    name: string;
+    surname?: string;
+    uid?: string;
+    email: string;
+    academicYear?: string;
+    stream?: string;
+    college: string;
+    registeredAt: string;
+  }[] = [];
 
-  // Events
+  // ==================== Events ====================
   getEvents() {
     return this.events;
   }
@@ -60,20 +72,69 @@ class LocalDataStore {
     return this.events.length < prevLen;
   }
 
-  registerForEvent(eventId: string, data: { name: string; email: string; college?: string }) {
+  // ==================== Event Registrations ====================
+  async registerForEvent(
+    eventId: string,
+    data: {
+      name: string;
+      surname?: string;
+      uid?: string;
+      email: string;
+      academicYear?: string;
+      stream?: string;
+      college?: string;
+    }
+  ) {
     const event = this.events.find((e) => e.id === eventId || e.slug === eventId);
     if (!event) throw new Error("Event not found");
 
-    const existing = this.registrations.find((r) => r.eventId === event.id && r.email.toLowerCase() === data.email.toLowerCase());
+    // Check duplicate in local store
+    const existing = this.registrations.find(
+      (r) => r.eventId === event.id && r.email.toLowerCase() === data.email.toLowerCase()
+    );
     if (existing) {
       throw new Error("You have already registered for this event with this email.");
+    }
+
+    // If Supabase is connected, persist to Supabase PostgreSQL table
+    if (isSupabaseConfigured) {
+      const client = getServiceSupabase() || supabase;
+      if (client) {
+        const { data: inserted, error } = await client
+          .from("registrations")
+          .insert({
+            event_id: event.id,
+            name: data.name,
+            surname: data.surname || "",
+            uid: data.uid || "",
+            email: data.email,
+            academic_year: data.academicYear || "",
+            stream: data.stream || "",
+            college: data.college || "St. Xavier's College",
+          })
+          .select()
+          .single();
+
+        if (error) {
+          console.warn("[Supabase] Registration fallback to local:", error.message);
+        } else {
+          // Increment in Supabase
+          try {
+            await client.rpc("increment_event_registrations", { event_id: event.id });
+          } catch (e) {}
+        }
+      }
     }
 
     const reg = {
       id: `reg-${Date.now()}`,
       eventId: event.id,
       name: data.name,
+      surname: data.surname,
+      uid: data.uid,
       email: data.email,
+      academicYear: data.academicYear,
+      stream: data.stream,
       college: data.college || "St. Xavier's College",
       registeredAt: new Date().toISOString(),
     };
@@ -82,104 +143,25 @@ class LocalDataStore {
     return reg;
   }
 
-  // Projects
-  getProjects() {
-    return this.projects;
-  }
+  // ==================== Contact Messages ====================
+  async addMessage(msg: Omit<ContactMessageData, "id" | "createdAt" | "isRead">) {
+    // If Supabase is connected, persist to Supabase table
+    if (isSupabaseConfigured) {
+      const client = getServiceSupabase() || supabase;
+      if (client) {
+        const { error } = await client.from("contact_messages").insert({
+          name: msg.name,
+          email: msg.email,
+          subject: msg.subject,
+          category: msg.category || "GENERAL",
+          message: msg.message,
+        });
+        if (error) {
+          console.warn("[Supabase] Contact message fallback to local:", error.message);
+        }
+      }
+    }
 
-  getProjectBySlug(slug: string) {
-    return this.projects.find((p) => p.slug === slug || p.id === slug) || null;
-  }
-
-  addProject(project: Omit<ProjectData, "id">) {
-    const newProject: ProjectData = {
-      ...project,
-      id: `proj-${Date.now()}`,
-    };
-    this.projects.unshift(newProject);
-    return newProject;
-  }
-
-  deleteProject(id: string) {
-    const prevLen = this.projects.length;
-    this.projects = this.projects.filter((p) => p.id !== id);
-    return this.projects.length < prevLen;
-  }
-
-  // Team
-  getDepartments() {
-    return this.departments;
-  }
-
-  getTeamMembers() {
-    return this.teamMembers;
-  }
-
-  addTeamMember(member: Omit<TeamMemberData, "id">) {
-    const newMember: TeamMemberData = {
-      ...member,
-      id: `member-${Date.now()}`,
-    };
-    this.teamMembers.push(newMember);
-    return newMember;
-  }
-
-  deleteTeamMember(id: string) {
-    const prevLen = this.teamMembers.length;
-    this.teamMembers = this.teamMembers.filter((m) => m.id !== id);
-    return this.teamMembers.length < prevLen;
-  }
-
-  // Gallery
-  getGallery() {
-    return this.gallery;
-  }
-
-  addGalleryImage(img: Omit<GalleryImageData, "id">) {
-    const newImg: GalleryImageData = {
-      ...img,
-      id: `gal-${Date.now()}`,
-    };
-    this.gallery.unshift(newImg);
-    return newImg;
-  }
-
-  deleteGalleryImage(id: string) {
-    const prevLen = this.gallery.length;
-    this.gallery = this.gallery.filter((g) => g.id !== id);
-    return this.gallery.length < prevLen;
-  }
-
-  // AWS Modules
-  getModules() {
-    return this.modules;
-  }
-
-  getModuleBySlug(slug: string) {
-    return this.modules.find((m) => m.slug === slug || m.serviceCode.toLowerCase() === slug.toLowerCase()) || null;
-  }
-
-  addModule(module: Omit<AWSModuleData, "id">) {
-    const newMod: AWSModuleData = {
-      ...module,
-      id: `mod-${Date.now()}`,
-    };
-    this.modules.push(newMod);
-    return newMod;
-  }
-
-  deleteModule(id: string) {
-    const prevLen = this.modules.length;
-    this.modules = this.modules.filter((m) => m.id !== id);
-    return this.modules.length < prevLen;
-  }
-
-  // Messages
-  getMessages() {
-    return this.messages;
-  }
-
-  addMessage(msg: { name: string; email: string; subject: string; message: string }) {
     const newMsg: ContactMessageData = {
       ...msg,
       id: `msg-${Date.now()}`,
@@ -190,23 +172,38 @@ class LocalDataStore {
     return newMsg;
   }
 
-  markMessageRead(id: string) {
-    const msg = this.messages.find((m) => m.id === id);
-    if (msg) {
-      msg.isRead = true;
-      return msg;
-    }
-    return null;
+  getMessages() {
+    return this.messages;
   }
 
-  deleteMessage(id: string) {
-    const prevLen = this.messages.length;
-    this.messages = this.messages.filter((m) => m.id !== id);
-    return this.messages.length < prevLen;
+  // ==================== Other Stores ====================
+  getProjects() {
+    return this.projects;
+  }
+
+  getDepartments() {
+    return this.departments;
+  }
+
+  getTeamMembers() {
+    return this.teamMembers;
+  }
+
+  getGallery() {
+    return this.gallery;
+  }
+
+  getAWSModules() {
+    return this.modules;
+  }
+
+  getModules() {
+    return this.modules;
+  }
+
+  getModuleBySlug(slug: string) {
+    return this.modules.find((m) => m.slug === slug || m.id === slug) || null;
   }
 }
 
-// Global Singleton Store
-const globalForStore = globalThis as unknown as { localStore?: LocalDataStore };
-export const db = globalForStore.localStore ?? new LocalDataStore();
-if (process.env.NODE_ENV !== "production") globalForStore.localStore = db;
+export const db = new LocalDataStore();
