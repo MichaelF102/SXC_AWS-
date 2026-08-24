@@ -23,7 +23,7 @@ export default function HomePage() {
     {
       title: "Learn",
       category: "Cloud Education",
-      desc: "Hands-on workshops, AWS certification roadmaps, and architecture masterclasses led by certified student mentors.",
+      desc: "Hands-on workshops, AWS certification roadmaps, and cloud masterclasses led by certified mentors.",
       icon: Terminal,
       color: "from-amber-500/20 to-aws-orange/5",
       border: "border-amber-500/30",
@@ -32,7 +32,7 @@ export default function HomePage() {
     {
       title: "Build",
       category: "Real-World Systems",
-      desc: "Architect and ship production-ready serverless apps, distributed microservices, and AI models on AWS infrastructure.",
+      desc: "Build applications, services, and AI models on AWS infrastructure.",
       icon: Code,
       color: "from-blue-500/20 to-cyan-500/5",
       border: "border-blue-500/30",
@@ -41,7 +41,7 @@ export default function HomePage() {
     {
       title: "Connect",
       category: "Industry & Mentorship",
-      desc: "Network with AWS Heroes, cloud startup founders, and global student leaders to fast-track tech careers.",
+      desc: "Network with Cloud Enthuisasts, Collaborate and Build Applications Together",
       icon: Users,
       color: "from-emerald-500/20 to-teal-500/5",
       border: "border-emerald-500/30",
