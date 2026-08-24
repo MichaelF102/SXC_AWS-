@@ -37,7 +37,7 @@ The **SXC AWS Club Platform** is a modern, high-performance web application engi
 ### 3. 🏛️ Hierarchical Organizational Command Tree
 * **Photo-Free Node Architecture**: Clean, enterprise command tree depicting the chain of responsibility across:
   * **Faculty In Charge**: Prof. Aaron Johns & Prof. Norine Dsouza
-  * **Chairperson**: Manav Williams
+  * **Chairperson**: Manav William
   * **Departments**: Director of Events, Event Coordination, Marketing (2 VCPs & Coordinators), Technical Department.
 
 ### 4. 📅 Flagship Events & Instant RSVP

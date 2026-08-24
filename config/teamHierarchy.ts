@@ -45,7 +45,7 @@ export const teamHierarchy: TeamHierarchy = {
     ],
   },
   chairperson: {
-    name: "Manav Williams",
+    name: "Manav William",
     role: "Chairperson",
     title: "EXECUTIVE CHAIRPERSON",
   },
