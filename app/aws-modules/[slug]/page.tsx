@@ -25,14 +25,24 @@ import { db } from "@/lib/db";
 import { ModuleDetailClient } from "@/components/aws/ModuleDetailClient";
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export function generateStaticParams() {
   const modules = db.getModules();
   return modules.map((m) => ({ slug: m.slug }));
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const module = db.getModuleBySlug(slug);
+  if (!module) return { title: "AWS Module Not Found" };
+  return {
+    title: `${module.title} (${module.serviceCode}) — SXC AWS Club`,
+    description: module.shortDesc,
+  };
 }
 
 const iconMap: Record<string, any> = {
@@ -49,8 +59,9 @@ const iconMap: Record<string, any> = {
   BarChart3,
 };
 
-export default function AWSModuleDetailPage({ params }: Props) {
-  const module = db.getModuleBySlug(params.slug);
+export default async function AWSModuleDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const module = db.getModuleBySlug(slug);
 
   if (!module) {
     notFound();

@@ -8,9 +8,9 @@ import { RegistrationModal } from "@/components/events/RegistrationModal";
 import { EventDetailsClient } from "@/components/events/EventDetailsClient";
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export function generateStaticParams() {
@@ -18,8 +18,19 @@ export function generateStaticParams() {
   return events.map((e) => ({ slug: e.slug }));
 }
 
-export default function EventDetailPage({ params }: Props) {
-  const event = db.getEventBySlug(params.slug);
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const event = db.getEventBySlug(slug);
+  if (!event) return { title: "Event Not Found" };
+  return {
+    title: `${event.title} — SXC AWS Club Events`,
+    description: event.description,
+  };
+}
+
+export default async function EventDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const event = db.getEventBySlug(slug);
 
   if (!event) {
     notFound();
