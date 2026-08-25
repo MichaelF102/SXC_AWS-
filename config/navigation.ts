@@ -8,7 +8,6 @@ export interface NavItem {
 export const mainNavItems: NavItem[] = [
   { title: "Home", href: "/" },
   { title: "About", href: "/about" },
-  { title: "Teams", href: "/teams" },
   { title: "Events", href: "/events" },
   { title: "Gallery", href: "/gallery" },
   { title: "Projects", href: "/projects" },
@@ -29,12 +28,11 @@ export const footerNavItems = {
     { title: "Cloud Fundamentals", href: "/#cloud-evolution" },
     { title: "AWS Modules Hub", href: "/aws-modules" },
     { title: "Interactive Roadmap", href: "/aws-learning-path" },
-    { title: "AWS Cloud Day", href: "/events/aws-cloud-day-2026" },
+    { title: "AWS Foundations", href: "/events/aws-foundations" },
   ],
   community: [
-    { title: "Meet the Teams", href: "/teams" },
-    { title: "Executive Board", href: "/teams#executive-board" },
     { title: "Join SXC AWS Club", href: "/contact" },
+    { title: "Learning Roadmap", href: "/aws-learning-path" },
     { title: "Admin Portal", href: "/admin" },
   ],
 };
