@@ -73,15 +73,14 @@ export function ServiceOrbit() {
             onMouseLeave={() => setHoveredService(null)}
             className="absolute z-10"
           >
-            <Link
-              href={`/aws-modules/${service.slug}`}
+            <div
               className="group flex flex-col items-center justify-center w-12 h-12 rounded-xl bg-navy-900/90 border border-white/15 hover:border-aws-orange shadow-lg hover:shadow-aws-orange/20 transition-all cursor-pointer backdrop-blur-md"
             >
               <Icon className="w-5 h-5 text-slate-300 group-hover:text-aws-orange transition-colors" />
               <span className="text-[9px] font-mono text-slate-400 group-hover:text-white font-medium">
                 {service.code}
               </span>
-            </Link>
+            </div>
           </motion.div>
         );
       })}

@@ -31,11 +31,11 @@ export default function NotFound() {
             <span>Return Home</span>
           </Link>
           <Link
-            href="/aws-learning-path"
+            href="/events"
             className="px-5 py-2.5 rounded-xl bg-navy-950 hover:bg-navy-800 text-slate-300 hover:text-white border border-white/10 text-xs font-mono transition-all flex items-center gap-2"
           >
             <Compass className="w-3.5 h-3.5 text-aws-orange" />
-            <span>Roadmap</span>
+            <span>Events</span>
           </Link>
         </div>
       </div>

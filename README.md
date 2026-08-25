@@ -10,7 +10,7 @@
 
 **Empowering St. Xavier's College builders to Architect, Deploy, and Scale on the AWS Cloud.**
 
-[Explore Platform](http://localhost:3000) • [Learning Path](http://localhost:3000/aws-learning-path) • [Upcoming Events](http://localhost:3000/events) • [Our Team](http://localhost:3000/teams)
+[Explore Platform](http://localhost:3000) • [Upcoming Events](http://localhost:3000/events) • [Our Teams](http://localhost:3000/teams) • [About Us](http://localhost:3000/about)
 
 </div>
 
@@ -18,7 +18,7 @@
 
 ## 🌟 Overview
 
-The **SXC AWS Club Platform** is a modern, high-performance web application engineered for the official student AWS Cloud community at **St. Xavier's College**. Built with **Next.js 14 App Router**, **TypeScript**, **Tailwind CSS**, and **Three.js**, it bridges the gap between theoretical computer science and enterprise cloud architecture.
+The **SXC AWS Club Platform** is a modern, high-performance web application engineered for the official student AWS Cloud community at **St. Xavier's College**. Built with **Next.js 15 App Router**, **TypeScript**, **Tailwind CSS**, and **Three.js**, it bridges the gap between theoretical computer science and enterprise cloud architecture.
 
 ---
 
@@ -27,20 +27,15 @@ The **SXC AWS Club Platform** is a modern, high-performance web application engi
 ### 1. 🌌 Futuristic Cloud Architecture Hero & 3D Visualizer
 * **Three.js Particle Cloud**: Dynamic 3D interactive particle cloud background with real-time mouse tracking.
 * **Interactive Architecture Explorer**: Live preview tabs for **Serverless Microservices**, **Multi-Region Resiliency**, and **GenAI on Bedrock**.
-* **Global Command Search (`⌘K`)**: Instant fuzzy search modal across all events, learning stages, team hierarchies, and AWS services.
+* **Global Command Search (`⌘K`)**: Instant fuzzy search modal across all events, student projects, and leadership teams.
 
-### 2. 🗺️ AWS Cloud Architect Learning Path & Market Roles
-* **9-Stage Interactive Roadmap**: Structured progression from *Cloud Fundamentals* and *Compute & Storage* to *Multi-Region IaC* and *Generative AI*.
-* **8 Market Career Roles**: Dedicated breakdowns for Cloud Architect, DevOps Engineer, Cloud Security, SRE, and AI/ML Engineer.
-* **Interactive Path Finder**: Dynamic role selector based on student interests (Coding, Infra, Security, AI, Data).
-
-### 3. 🏛️ Hierarchical Organizational Command Tree
+### 2. 🏛️ Hierarchical Organizational Command Tree
 * **Photo-Free Node Architecture**: Clean, enterprise command tree depicting the chain of responsibility across:
   * **Faculty In Charge**: Prof. Aaron Johns & Prof. Norine Dsouza
   * **Chairperson**: Manav William
   * **Departments**: Director of Events, Event Coordination, Marketing (2 VCPs & Coordinators), Technical Department.
 
-### 4. 📅 Flagship Events & Instant RSVP
+### 3. 📅 Flagship Events & Instant RSVP
 * **AWS Foundations Event**: Complete schedule, speaker panel, venue details (*Bonet Lab*), and curriculum outline.
 * **Registration Form**: Streamlined student registration validating:
   * Name & Surname
@@ -49,14 +44,7 @@ The **SXC AWS Club Platform** is a modern, high-performance web application engi
   * Academic Year (*FY, SY, TY, PG Part 1, PG Part 2*)
   * Stream (*BSc, BSc IT, BSc AI, BCom, BMS, BA, BAF, MSc BDA, MSc*)
 
-### 5. 📚 11 Deep-Dive AWS Service Modules
-* Interactive technical modules with architecture diagrams, cost calculators, CLI cheat sheets, and best practices for:
-  * **Compute & Containers**: EC2, Lambda, ECS/EKS
-  * **Storage & Databases**: S3, DynamoDB, RDS Aurora
-  * **Networking & Security**: VPC, IAM, CloudFront
-  * **AI & Analytics**: Amazon Bedrock, AWS Glue & Athena
-
-### 6. 📸 Media Archive & 🛠️ Innovation Lab
+### 4. 📸 Media Archive & 🛠️ Innovation Lab
 * Filterable **Photo & Moment Gallery** archive with status tracking.
 * **Open-Source Project Showcase** under active development for the 2026 cohort.
 
@@ -81,12 +69,10 @@ The **SXC AWS Club Platform** is a modern, high-performance web application engi
 
 ```text
 SXC_AWS/
-├── app/                        # Next.js 14 App Router Pages
+├── app/                        # Next.js 15 App Router Pages
 │   ├── about/                  # About Page (Mission, Vision, Member Perks)
 │   ├── admin/                  # Admin Management Portal
 │   ├── api/                    # API Endpoints (events, register, contact)
-│   ├── aws-learning-path/      # 9-Stage Roadmap & Cloud Roles
-│   ├── aws-modules/            # 11 AWS Architecture Modules
 │   ├── contact/                # Contact & FAQ Portal
 │   ├── events/                 # Flagship Community Events
 │   ├── gallery/                # Moments & Keynotes Gallery
@@ -103,10 +89,8 @@ SXC_AWS/
 │   ├── gallery/                # Gallery Grid & Lightbox
 │   ├── home/                   # Hero, 3D Cloud, Feature Grids
 │   ├── navbar/                 # Global Navigation & Search Modal
-│   ├── roadmap/                # Roadmap Stages & Cloud Roles Section
 │   └── teams/                  # Organizational Command Tree Nodes
 ├── config/                     # Configuration Schemas
-│   ├── cloudRoles.ts           # 8 Market Career Paths Schema
 │   ├── navigation.ts           # Global Nav Items
 │   ├── site.ts                 # Metadata & Social Links
 │   └── teamHierarchy.ts        # Leadership & Department Tree Data

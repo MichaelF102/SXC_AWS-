@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Search, X, Calendar, FolderGit2, Cpu, ArrowRight, Sparkles } from "lucide-react";
+import { Search, X, Calendar, FolderGit2, Users, ArrowRight, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { INITIAL_EVENTS, INITIAL_PROJECTS, INITIAL_AWS_MODULES } from "@/lib/data/initialData";
+import { INITIAL_EVENTS, INITIAL_PROJECTS } from "@/lib/data/initialData";
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -43,13 +43,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
       p.awsServices.some((s) => s.toLowerCase().includes(query.toLowerCase()))
   ).slice(0, 3);
 
-  const filteredModules = INITIAL_AWS_MODULES.filter(
-    (m) =>
-      m.title.toLowerCase().includes(query.toLowerCase()) ||
-      m.serviceCode.toLowerCase().includes(query.toLowerCase()) ||
-      m.description.toLowerCase().includes(query.toLowerCase())
-  ).slice(0, 3);
-
   const handleSelect = (href: string) => {
     onClose();
     router.push(href);
@@ -66,7 +59,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search events, projects, AWS modules, workshops..."
+            placeholder="Search events, projects, workshops, teams..."
             className="w-full bg-transparent text-white placeholder-slate-400 focus:outline-none text-base"
           />
           <button
@@ -87,25 +80,25 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <button
-                  onClick={() => handleSelect("/aws-modules/ec2")}
+                  onClick={() => handleSelect("/events/aws-foundations")}
                   className="flex items-center gap-2 p-2.5 rounded-xl bg-navy-800/60 hover:bg-navy-700/80 border border-white/5 text-left text-xs text-slate-200 hover:text-aws-orange transition-colors"
                 >
-                  <Cpu className="w-4 h-4 text-aws-orange" />
-                  <span>Amazon EC2 Guide</span>
+                  <Calendar className="w-4 h-4 text-aws-orange" />
+                  <span>AWS Foundations Event</span>
                 </button>
                 <button
-                  onClick={() => handleSelect("/aws-modules/lambda")}
+                  onClick={() => handleSelect("/teams")}
                   className="flex items-center gap-2 p-2.5 rounded-xl bg-navy-800/60 hover:bg-navy-700/80 border border-white/5 text-left text-xs text-slate-200 hover:text-aws-orange transition-colors"
                 >
-                  <Sparkles className="w-4 h-4 text-amber-400" />
-                  <span>AWS Lambda Serverless</span>
+                  <Users className="w-4 h-4 text-cyan-400" />
+                  <span>Meet Our Teams</span>
                 </button>
                 <button
-                  onClick={() => handleSelect("/events/aws-cloud-day-2026")}
+                  onClick={() => handleSelect("/events")}
                   className="flex items-center gap-2 p-2.5 rounded-xl bg-navy-800/60 hover:bg-navy-700/80 border border-white/5 text-left text-xs text-slate-200 hover:text-aws-orange transition-colors"
                 >
                   <Calendar className="w-4 h-4 text-blue-400" />
-                  <span>AWS Cloud Day 2026</span>
+                  <span>All Events & Workshops</span>
                 </button>
                 <button
                   onClick={() => handleSelect("/projects")}
@@ -145,35 +138,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             </div>
           )}
 
-          {/* AWS Modules Results */}
-          {filteredModules.length > 0 && (
-            <div className="space-y-1.5">
-              <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 px-2 font-semibold">
-                AWS Modules & Labs
-              </div>
-              {filteredModules.map((mod) => (
-                <button
-                  key={mod.id}
-                  onClick={() => handleSelect(`/aws-modules/${mod.slug}`)}
-                  className="w-full flex items-center justify-between p-2.5 rounded-xl bg-navy-800/40 hover:bg-navy-800 border border-transparent hover:border-aws-orange/30 text-left transition-colors group"
-                >
-                  <div className="flex items-center gap-3 truncate">
-                    <Cpu className="w-4 h-4 text-amber-400 shrink-0" />
-                    <div className="truncate">
-                      <div className="text-xs font-semibold text-white group-hover:text-aws-orange truncate">
-                        {mod.title} ({mod.serviceCode})
-                      </div>
-                      <div className="text-[10px] text-slate-400 truncate">{mod.shortDesc}</div>
-                    </div>
-                  </div>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-aws-orange/15 text-aws-orange font-mono">
-                    {mod.difficulty}
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
-
           {/* Projects Results */}
           {filteredProjects.length > 0 && (
             <div className="space-y-1.5">
@@ -205,7 +169,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         {/* Footer info */}
         <div className="px-4 py-2.5 bg-navy-950/60 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400 font-mono">
           <span>Press ESC to exit</span>
-          <span>SXC AWS Knowledge Base</span>
+          <span>SXC AWS Community Search</span>
         </div>
       </div>
     </div>

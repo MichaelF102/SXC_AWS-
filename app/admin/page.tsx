@@ -23,19 +23,17 @@ import {
   INITIAL_PROJECTS,
   INITIAL_TEAM_MEMBERS,
   INITIAL_GALLERY,
-  INITIAL_AWS_MODULES,
   INITIAL_CONTACT_MESSAGES,
 } from "@/lib/data/initialData";
 
 export default function AdminPage() {
-  const [activeTab, setActiveTab] = useState<"overview" | "events" | "projects" | "members" | "gallery" | "modules" | "messages">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "events" | "projects" | "members" | "gallery" | "messages">("overview");
 
   // Local state for dynamic changes in the dashboard session
   const [events, setEvents] = useState(INITIAL_EVENTS);
   const [projects, setProjects] = useState(INITIAL_PROJECTS);
   const [members, setMembers] = useState(INITIAL_TEAM_MEMBERS);
   const [gallery, setGallery] = useState(INITIAL_GALLERY);
-  const [modules, setModules] = useState(INITIAL_AWS_MODULES);
   const [messages, setMessages] = useState(INITIAL_CONTACT_MESSAGES);
 
   // Form modal states
@@ -193,7 +191,6 @@ export default function AdminPage() {
             { id: "projects", label: `Projects (${projects.length})`, icon: FolderGit2 },
             { id: "members", label: `Leadership (${members.length})`, icon: Users },
             { id: "gallery", label: `Gallery (${gallery.length})`, icon: Camera },
-            { id: "modules", label: `AWS Modules (${modules.length})`, icon: Cpu },
             { id: "messages", label: `Inquiries (${messages.length})`, icon: Mail },
           ].map((tab) => {
             const Icon = tab.icon;

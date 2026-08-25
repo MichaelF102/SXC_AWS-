@@ -89,11 +89,11 @@ export default function HomePage() {
               </Link>
 
               <Link
-                href="/aws-modules"
+                href="/events"
                 className="px-6 py-3 rounded-xl bg-navy-900/80 hover:bg-navy-800 text-slate-200 hover:text-aws-orange border border-white/15 hover:border-aws-orange/50 text-sm font-semibold transition-all backdrop-blur-md flex items-center gap-2"
               >
-                <Cpu className="w-4 h-4 text-aws-orange" />
-                <span>Explore AWS Modules</span>
+                <Terminal className="w-4 h-4 text-aws-orange" />
+                <span>Upcoming Events</span>
               </Link>
             </div>
 
@@ -269,10 +269,10 @@ export default function HomePage() {
               Join the Community Today
             </Link>
             <Link
-              href="/aws-learning-path"
+              href="/teams"
               className="px-8 py-3.5 rounded-xl bg-navy-950 hover:bg-navy-800 text-slate-200 hover:text-aws-orange border border-white/15 hover:border-aws-orange text-sm font-semibold transition-all"
             >
-              Explore Learning Roadmap
+              Meet Our Teams
             </Link>
           </div>
         </div>

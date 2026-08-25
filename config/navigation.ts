@@ -12,8 +12,6 @@ export const mainNavItems: NavItem[] = [
   { title: "Events", href: "/events" },
   { title: "Gallery", href: "/gallery" },
   { title: "Projects", href: "/projects" },
-  { title: "AWS Modules", href: "/aws-modules", badge: "Hub" },
-  { title: "Learning Path", href: "/aws-learning-path" },
   { title: "Contact", href: "/contact" },
 ];
 
@@ -27,9 +25,8 @@ export const footerNavItems = {
   ],
   learn: [
     { title: "Cloud Fundamentals", href: "/#cloud-evolution" },
-    { title: "AWS Modules Hub", href: "/aws-modules" },
-    { title: "Interactive Roadmap", href: "/aws-learning-path" },
-    { title: "AWS Foundations", href: "/events/aws-foundations" },
+    { title: "AWS Foundations Workshop", href: "/events/aws-foundations" },
+    { title: "Student Community Projects", href: "/projects" },
   ],
   community: [
     { title: "Meet the Teams", href: "/teams" },

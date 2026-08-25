@@ -70,11 +70,11 @@ export default function ProjectsPage() {
           {/* Action CTAs */}
           <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
             <Link
-              href="/aws-learning-path"
+              href="/events"
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-aws-orange to-amber-600 hover:from-amber-500 hover:to-aws-orange text-black font-bold text-xs font-mono shadow-xl shadow-aws-orange/20 transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
             >
               <Compass className="w-4 h-4" />
-              <span>Explore Learning Roadmap</span>
+              <span>Explore Upcoming Events</span>
             </Link>
 
             <Link
