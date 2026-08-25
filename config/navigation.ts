@@ -8,6 +8,7 @@ export interface NavItem {
 export const mainNavItems: NavItem[] = [
   { title: "Home", href: "/" },
   { title: "About", href: "/about" },
+  { title: "Teams", href: "/teams" },
   { title: "Events", href: "/events" },
   { title: "Gallery", href: "/gallery" },
   { title: "Projects", href: "/projects" },
@@ -31,7 +32,9 @@ export const footerNavItems = {
     { title: "AWS Foundations", href: "/events/aws-foundations" },
   ],
   community: [
+    { title: "Meet the Teams", href: "/teams" },
+    { title: "Executive Board", href: "/teams#executive-board" },
     { title: "Join SXC AWS Club", href: "/contact" },
-    { title: "Learning Roadmap", href: "/aws-learning-path" },
+    { title: "Admin Portal", href: "/admin" },
   ],
 };
