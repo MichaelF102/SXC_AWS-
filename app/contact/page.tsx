@@ -227,55 +227,13 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="text-[10px] font-mono text-slate-400 uppercase">Campus Location</div>
-                    <div className="text-xs font-semibold text-white">Cloud Innovation Lab 302, St. Xavier&apos;s College</div>
+                    <div className="text-xs font-semibold text-white">St. Xavier&apos;s College,Fort, Mumbai</div>
                   </div>
                 </div>
               </div>
 
               {/* Social Channels */}
-              <div className="pt-3 border-t border-white/10">
-                <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold mb-3">
-                  Official Channels
-                </div>
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  <a
-                    href={siteConfig.links.discord}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2.5 rounded-xl bg-navy-950 hover:bg-navy-800 border border-white/10 hover:border-aws-orange/40 text-slate-300 hover:text-aws-orange flex items-center gap-2 transition-colors"
-                  >
-                    <MessageSquare className="w-4 h-4 text-indigo-400" />
-                    <span>Discord Server</span>
-                  </a>
-                  <a
-                    href={siteConfig.links.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2.5 rounded-xl bg-navy-950 hover:bg-navy-800 border border-white/10 hover:border-aws-orange/40 text-slate-300 hover:text-aws-orange flex items-center gap-2 transition-colors"
-                  >
-                    <Github className="w-4 h-4 text-white" />
-                    <span>GitHub Org</span>
-                  </a>
-                  <a
-                    href={siteConfig.links.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2.5 rounded-xl bg-navy-950 hover:bg-navy-800 border border-white/10 hover:border-aws-orange/40 text-slate-300 hover:text-aws-orange flex items-center gap-2 transition-colors"
-                  >
-                    <Linkedin className="w-4 h-4 text-blue-400" />
-                    <span>LinkedIn Page</span>
-                  </a>
-                  <a
-                    href={siteConfig.links.instagram}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2.5 rounded-xl bg-navy-950 hover:bg-navy-800 border border-white/10 hover:border-aws-orange/40 text-slate-300 hover:text-aws-orange flex items-center gap-2 transition-colors"
-                  >
-                    <Instagram className="w-4 h-4 text-pink-400" />
-                    <span>Instagram</span>
-                  </a>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
@@ -305,9 +263,8 @@ export default function ContactPage() {
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-aws-orange transition-transform duration-200 shrink-0 ml-2 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
+                    className={`w-4 h-4 text-aws-orange transition-transform duration-200 shrink-0 ml-2 ${isOpen ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
                 {isOpen && (
