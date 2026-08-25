@@ -21,35 +21,6 @@
 The **SXC AWS Club Platform** is a modern, high-performance web application engineered for the official student AWS Cloud community at **St. Xavier's College**. Built with **Next.js 15 App Router**, **TypeScript**, **Tailwind CSS**, and **Three.js**, it bridges the gap between theoretical computer science and enterprise cloud architecture.
 
 ---
-
-## 🚀 Key Features
-
-### 1. 🌌 Futuristic Cloud Architecture Hero & 3D Visualizer
-* **Three.js Particle Cloud**: Dynamic 3D interactive particle cloud background with real-time mouse tracking.
-* **Interactive Architecture Explorer**: Live preview tabs for **Serverless Microservices**, **Multi-Region Resiliency**, and **GenAI on Bedrock**.
-* **Global Command Search (`⌘K`)**: Instant fuzzy search modal across all events, student projects, and leadership teams.
-
-### 2. 🏛️ Hierarchical Organizational Command Tree
-* **Photo-Free Node Architecture**: Clean, enterprise command tree depicting the chain of responsibility across:
-  * **Faculty In Charge**: Prof. Aaron Johns & Prof. Norine Dsouza
-  * **Chairperson**: Manav William
-  * **Departments**: Director of Events, Event Coordination, Marketing (2 VCPs & Coordinators), Technical Department.
-
-### 3. 📅 Flagship Events & Instant RSVP
-* **AWS Foundations Event**: Complete schedule, speaker panel, venue details (*Bonet Lab*), and curriculum outline.
-* **Registration Form**: Streamlined student registration validating:
-  * Name & Surname
-  * Student UID / Roll Number
-  * Email Address
-  * Academic Year (*FY, SY, TY, PG Part 1, PG Part 2*)
-  * Stream (*BSc, BSc IT, BSc AI, BCom, BMS, BA, BAF, MSc BDA, MSc*)
-
-### 4. 📸 Media Archive & 🛠️ Innovation Lab
-* Filterable **Photo & Moment Gallery** archive with status tracking.
-* **Open-Source Project Showcase** under active development for the 2026 cohort.
-
----
-
 ## 🛠️ Technology Stack
 
 | Layer | Technology |
@@ -147,18 +118,6 @@ npm run build
 npm run start
 ```
 
-### Deploying to Cloudflare Pages
-1. Push your code to **GitHub** or **GitLab**.
-2. Go to **Cloudflare Dashboard** > **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
-3. Configure the build settings:
-   * **Framework preset**: `Next.js`
-   * **Build command**: `npm run build`
-   * **Build output directory**: `.next`
-   * **Environment Variables**:
-     * `NODE_VERSION`: `20`
-
----
-
 ## 🤝 Contributing
 
 Contributions from students and community builders are welcome!
@@ -173,9 +132,3 @@ Contributions from students and community builders are welcome!
 ## 📜 License
 
 Distributed under the **MIT License**. See `LICENSE` for more information.
-
----
-
-<div align="center">
-  <sub>Built with ❤️ by the student cloud architects at <strong>St. Xavier's College AWS Club</strong>.</sub>
-</div>
